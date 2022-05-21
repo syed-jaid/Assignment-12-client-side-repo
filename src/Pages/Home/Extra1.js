@@ -3,13 +3,13 @@ import img from '../../images/extra/ASUS-GeForce-GTX-1660-SUPER-Series_Banner_12
 
 const Extra1 = () => {
     return (
-        <div class="hero min-h-screen ">
-            <div class="hero-content flex-col lg:flex-row-reverse">
-                <img src={img} class="lg:w-[600px] lg:h-[400px] rounded-lg shadow-2xl" />
+        <div className="hero min-h-screen  lg:mt-[120px]">
+            <div className="hero-content flex-col lg:flex-row-reverse">
+                <img src={img} className="lg:w-[600px] lg:h-[400px] rounded-lg shadow-2xl" />
                 <div>
-                    <h1 class="text-5xl font-bold">The GAMING You Know & Trust</h1>
-                    <p class="py-6">The latest iteration of MSI’s iconic GAMING series once again brings performance, low-noise efficiency, and aesthetics that hardcore gamers have come to recognize and trust.</p>
-                    <button class="btn btn-wide">Wide</button>
+                    <h1 className="text-5xl font-bold ">The GAMING You Know & Trust</h1>
+                    <p className="py-6">The latest iteration of MSI’s iconic GAMING series once again brings performance, low-noise efficiency, and aesthetics that hardcore gamers have come to recognize and trust.</p>
+                    <button className="btn btn-wide"><a href="https://web.programming-hero.com/dashboard">Read MORE</a></button>
                 </div>
             </div>
         </div>
