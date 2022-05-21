@@ -1,9 +1,11 @@
 import React from 'react';
+import Carousel from './Carousel';
 
 const Home = () => {
     return (
-        <div>
-            <h1>home</h1>
+        <div className='lg:w-[1200px] mx-auto'>
+            {/* Carousel part  */}
+            <Carousel></Carousel>
         </div>
     );
 };

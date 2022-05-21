@@ -8,7 +8,7 @@ const Navbar = () => {
         <li><a className='font-semibold text-cyan-500'>ABOUT ME</a></li>
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar mx-auto lg:w-[1150px]">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
