@@ -1,0 +1,16 @@
+.all-items-div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+    .all-items-div {
+        display: inline-block;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}

@@ -1,0 +1,41 @@
+import React, { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
+
+const Items = () => {
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        fetch('data.json')
+            .then(res => res.json())
+            .then(data => setItems(data))
+    }, []);
+    return (
+        <div className='all-items-div'>
+            {
+                items.map(item =>
+                    <div class="card w-full lg:w-80 my-[35px] mx-auto bg-base-100 shadow-xl">
+                        <figure><img src={item.img} alt="Shoes" /></figure>
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                {item.name}
+                                <div class="badge badge-primary">NEW</div>
+                            </h2>
+                            <div class=" justify-start">
+                                <p >{item.discription}Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                <p className='my-[6px] font-bold'>Price : {item.price}</p>
+                                <p>Available Quantity : {item.availqunity}</p>
+                                <p> Minimum Order quantity : {item.minOrderquntity}</p>
+
+                            </div>
+
+                            <div class="card-actions justify-center">
+                                <button class="btn btn-outline w-full">Purchase</button>
+                            </div>
+                        </div>
+                    </div>)
+            }
+        </div>
+    );
+};
+
+export default Items;
