@@ -1,16 +1,18 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
-
+import { FiLogOut, FiLogIn } from "react-icons/fi";
 const Navbar = () => {
 
     const [user] = useAuthState(auth)
-
+    const navigate = useNavigate('')
     const manu = <>
         <li><Link to='/' className='font-semibold text-cyan-500'>HOME</Link></li>
-        <li><Link to='/dashboard' className='font-semibold text-cyan-500'>DASHBOARD</Link></li>
+        {
+            user?.email && <li><Link to='/dashboard' className='font-semibold text-cyan-500'>DASHBOARD</Link></li>
+        }
         <li><Link to='/blogs' className='font-semibold text-cyan-500'>BLOG</Link></li>
         <li><Link to='/about' className='font-semibold text-cyan-500'>ABOUT ME</Link></li>
     </>
@@ -34,9 +36,8 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user ? <p onClick={() => signOut(auth)} className="btn btn-outline font-bold mr-[12px]" to='/logIn'>LOG OUT</p> : <>
-                        <Link className="btn btn-outline font-bold mr-[12px]" to='/logIn'>LOG IN</Link>
-                        <Link className="btn btn-outline font-bold" to='/signup'>SIGN UP</Link>
+                    user ? <p onClick={() => signOut(auth).then(navigate('/'), localStorage.removeItem('accessToken'))} className="btn btn-outline font-bold mr-[12px]" to='/logIn'>LOG OUT <FiLogOut className='mx-[7px] text-xl' /></p> : <>
+                        <Link className="btn btn-outline font-bold mr-[12px]" to='/logIn'>LOG IN <FiLogIn className='mx-[7px] text-xl' /></Link>
                     </>
                 }
             </div>

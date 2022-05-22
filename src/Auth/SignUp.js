@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../firebase.init';
 import Spinner from '../ForAll/Spinner';
+import useToken from '../hook/useToken';
 
 const SignUp = () => {
     // navigator 
@@ -28,8 +29,7 @@ const SignUp = () => {
     // signIn Wit google 
     const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth)
 
-    // const [token] = useToken(guser || user)
-
+    const [token] = useToken(guser || user)
     // react form 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
@@ -48,7 +48,7 @@ const SignUp = () => {
         return <Spinner></Spinner>;
     }
 
-    if (guser || user) {
+    if (token) {
         naviget(from, { replace: true })
     }
 

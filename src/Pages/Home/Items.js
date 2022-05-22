@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { BsShop } from "react-icons/bs";
+// import { useQuery } from 'react-query';
 
 const Items = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch('data.json')
+        fetch('http://localhost:5000/items')
             .then(res => res.json())
             .then(data => setItems(data))
     }, []);
     return (
         <div className='all-items-div'>
             {
-                items.map(item =>
-                    <div class="card w-full lg:w-80 my-[35px] mx-auto bg-base-100 shadow-xl">
+                items?.map(item =>
+                    <div key={item._id} class="card w-full lg:w-80 my-[35px] mx-auto bg-base-100 shadow-xl">
                         <figure><img src={item.img} alt="Shoes" /></figure>
                         <div class="card-body">
                             <h2 class="card-title">
@@ -28,7 +30,7 @@ const Items = () => {
                             </div>
 
                             <div class="card-actions justify-center">
-                                <button class="btn btn-outline w-full">Purchase</button>
+                                <button class="btn btn-outline w-full">Purchase <BsShop className='mx-[7px] text-lg' /></button>
                             </div>
                         </div>
                     </div>)
