@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../firebase.init';
 import Spinner from '../ForAll/Spinner';
+import { FcGoogle } from "react-icons/fc";
 
 const LogIn = () => {
 
@@ -95,15 +96,15 @@ const LogIn = () => {
                             {signInError}
                             {/* login btn  */}
                             <div className="form-control mt-[18px]">
-                                <input className="btn btn-accent text-white" type="submit" value="Log In" />
+                                <input className="btn btn-accent text-white" type="submit" value='Log In' />
                             </div>
                         </form>
                         <div className='text-center font-semibold m-[4px]'>
-                            <small>New to Doctors Portal? <Link className='text-cyan-500' to='/singup'>Create new account</Link></small>
+                            <small>New to Doctors Portal? <Link className='text-cyan-500' to='/signup'>Create new account</Link></small>
                         </div>
                         <div className="divider">OR</div>
                         <div className="form-control mt-[18px]">
-                            <button onClick={() => signInWithGoogle()} className="btn bg-white  text-lg font-normal">CONTINUE WITH GOOGLE</button>
+                            <button onClick={() => signInWithGoogle()} className="btn bg-white  text-lg font-normal"><FcGoogle className='text-2xl mx-[5px]' /> CONTINUE WITH GOOGLE</button>
                         </div>
                     </div>
                 </div>

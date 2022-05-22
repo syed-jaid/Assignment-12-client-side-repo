@@ -15,7 +15,7 @@ const Navbar = () => {
         <li><Link to='/about' className='font-semibold text-cyan-500'>ABOUT ME</Link></li>
     </>
     return (
-        <div className="navbar mx-auto lg:px-[180px]">
+        <div className="navbar mx-auto lg:px-[180px] bg-base-200">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
