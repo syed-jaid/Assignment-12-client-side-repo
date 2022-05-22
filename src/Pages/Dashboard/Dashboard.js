@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Navbar from '../../ForAll/Navbar/Navbar';
 
 const Dashboard = () => {
@@ -9,7 +10,7 @@ const Dashboard = () => {
             <div className="drawer drawer-mobile lg:w-[1170px] mx-auto">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content ">
-                    <h1 className='text-4xl p-[30px]'>DashBoard</h1>
+
                     <Outlet />
                     <label for="my-drawer-2" className="btn btn-primary drawer-button lg:hidden mx-[120px]">Open drawer</label>
 
@@ -27,6 +28,7 @@ const Dashboard = () => {
                     </ul>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
