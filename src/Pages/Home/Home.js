@@ -5,6 +5,7 @@ import Items from './Items';
 import './Home.css'
 import Extra1 from './Extra1';
 import Footer from '../../ForAll/Footer/Footer';
+import Summery from './Summery';
 
 const Home = () => {
     return (
@@ -18,6 +19,9 @@ const Home = () => {
                 <Items></Items>
                 {/* extra part  */}
                 <Extra1></Extra1>
+
+                {/* Business Summery  */}
+                <Summery></Summery>
             </div>
             <Footer></Footer>
         </div>
