@@ -20,23 +20,23 @@ const Footer = () => {
             <footer class="footer p-10 bg-base-200 text-base-content">
                 <div>
                     <span class="footer-title">Services</span>
-                    <a class="link link-hover">Branding</a>
-                    <a class="link link-hover">Design</a>
-                    <a class="link link-hover">Marketing</a>
-                    <a class="link link-hover">Advertisement</a>
+                    <a class="link link-hover" href='/'>Branding</a>
+                    <a class="link link-hover" href='/'>Design</a>
+                    <a class="link link-hover" href='/'>Marketing</a>
+                    <a class="link link-hover" href='/'>Advertisement</a>
                 </div>
                 <div>
                     <span class="footer-title">Company</span>
-                    <a class="link link-hover">About us</a>
-                    <a class="link link-hover">Contact</a>
-                    <a class="link link-hover">Jobs</a>
-                    <a class="link link-hover">Press kit</a>
+                    <a class="link link-hover" href='/'>About us</a>
+                    <a class="link link-hover" href='/'>Contact</a>
+                    <a class="link link-hover" href='/'>Jobs</a>
+                    <a class="link link-hover" href='/'>Press kit</a>
                 </div>
                 <div>
                     <span class="footer-title">Legal</span>
-                    <a class="link link-hover">Terms of use</a>
-                    <a class="link link-hover">Privacy policy</a>
-                    <a class="link link-hover">Cookie policy</a>
+                    <a class="link link-hover" href='/'>Terms of use</a>
+                    <a class="link link-hover" href='/'>Privacy policy</a>
+                    <a class="link link-hover" href='/'>Cookie policy</a>
                 </div>
             </footer>
             <div className='bg-base-200 text-center p-6'>

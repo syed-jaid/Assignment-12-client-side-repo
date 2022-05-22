@@ -1,11 +1,18 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
+
+    const [user] = useAuthState(auth)
+
     const manu = <>
-        <li><a className='font-semibold text-cyan-500'>HOME</a></li>
-        <li><a className='font-semibold text-cyan-500'>DASHBOARD</a></li>
-        <li><a className='font-semibold text-cyan-500'>BLOG</a></li>
-        <li><a className='font-semibold text-cyan-500'>ABOUT ME</a></li>
+        <li><Link to='/' className='font-semibold text-cyan-500'>HOME</Link></li>
+        <li><Link to='/dashboard' className='font-semibold text-cyan-500'>DASHBOARD</Link></li>
+        <li><Link to='/blogs' className='font-semibold text-cyan-500'>BLOG</Link></li>
+        <li><Link to='/about' className='font-semibold text-cyan-500'>ABOUT ME</Link></li>
     </>
     return (
         <div className="navbar mx-auto lg:px-[180px]">
@@ -26,7 +33,12 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <p className="btn btn-outline font-bold" href='/'>LOG IN</p>
+                {
+                    user ? <p onClick={() => signOut(auth)} className="btn btn-outline font-bold mr-[12px]" to='/logIn'>LOG OUT</p> : <>
+                        <Link className="btn btn-outline font-bold mr-[12px]" to='/logIn'>LOG IN</Link>
+                        <Link className="btn btn-outline font-bold" to='/signup'>SIGN UP</Link>
+                    </>
+                }
             </div>
         </div>
     );
