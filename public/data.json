@@ -5,8 +5,8 @@
         "img": "https://i.ibb.co/z4dd2mZ/1.png",
         "price": "price",
         "quantity": "quantity",
-        "minOrderquntity": 1,
-        "availqunity": 12,
+        "minOrderquntity": 4,
+        "availqunity": "32",
         "supplierName": "supplierName"
     },
     {
@@ -15,8 +15,8 @@
         "img": "https://i.ibb.co/X7wm0Xp/6.png",
         "price": "price",
         "quantity": "quantity",
-        "minOrderquntity": 1,
-        "availqunity": 12,
+        "minOrderquntity": 4,
+        "availqunity": "32",
         "supplierName": "supplierName"
     },
     {
@@ -25,8 +25,8 @@
         "img": "https://i.ibb.co/YQRgrhW/2.png",
         "price": "price",
         "quantity": "quantity",
-        "minOrderquntity": 1,
-        "availqunity": 12,
+        "minOrderquntity": 4,
+        "availqunity": "32",
         "supplierName": "supplierName"
     },
     {
@@ -35,8 +35,8 @@
         "img": "https://i.ibb.co/BsNFY5V/4.png",
         "price": "price",
         "quantity": "quantity",
-        "minOrderquntity": 1,
-        "availqunity": 12,
+        "minOrderquntity": 4,
+        "availqunity": "32",
         "supplierName": "supplierName"
     },
     {
@@ -45,8 +45,8 @@
         "img": "https://i.ibb.co/8X7ffcx/5.png",
         "price": "price",
         "quantity": "quantity",
-        "minOrderquntity": 1,
-        "availqunity": 12,
+        "minOrderquntity": 4,
+        "availqunity": "32",
         "supplierName": "supplierName"
     },
     {
@@ -55,8 +55,8 @@
         "img": "https://i.ibb.co/BsNFY5V/4.png",
         "price": "price",
         "quantity": "quantity",
-        "minOrderquntity": 1,
-        "availqunity": 12,
+        "minOrderquntity": 4,
+        "availqunity": "32",
         "supplierName": "supplierName"
     }
 ]

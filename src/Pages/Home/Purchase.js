@@ -1,30 +1,66 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Navbar from '../../ForAll/Navbar/Navbar';
 
 const Purchase = () => {
     const { _id } = useParams()
     const [item, setItem] = useState({})
-    const [quantitys, setquntity] = useState('')
+    const [quantity, setquntity] = useState(false)
+
+    const navigate = useNavigate('')
 
     const [user] = useAuthState(auth)
+
     // react form 
-    const { register, handleSubmit, reset } = useForm()
+    const { register, handleSubmit, formState: { errors }, reset } = useForm()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/item/${_id}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/item/${_id}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                console.log(res.status)
+                if (res.status === 403) {
+                    signOut(auth);
+                    localStorage.removeItem('accessToken')
+                    navigate('/login')
+                }
+                else if (res.status === 401) {
+                    signOut(auth);
+                    localStorage.removeItem('accessToken')
+                    navigate('/login')
+                }
+                return res.json()
+            })
             .then(data => {
-                console.log(data)
                 setItem(data);
-                setquntity(data.quantity);
             })
     }, [])
 
-    const onSubmit = data => { }
+
+    const onSubmit = data => {
+        console.log(typeof item.availqunity, typeof data.quentity)
+        const inputQunentity = parseFloat(data.quentity);
+        const minOrderquntity = item.minOrderquntity;
+        const availqunity = item.availqunity;
+        console.log(availqunity)
+        if (inputQunentity < minOrderquntity) {
+            alert("You can not order lase then 1 pic")
+        }
+        else if (inputQunentity > availqunity) {
+            alert("You can not order more then 12 pic")
+        }
+        else {
+            alert('yes')
+        }
+    }
 
     return (
         <div>
@@ -35,18 +71,18 @@ const Purchase = () => {
 
                     <div className='lg:flex'>
                         {/* items info  */}
-                        <div key={item._id} class="card w-full lg:w-80 my-[35px] mx-auto bg-base-100 shadow-xl border-4 border-[#d2d4e3]">
-                            <figure><img src={item.img} alt="" /></figure>
+                        <div key={item?._id} class="card  lg:w-80 my-[35px] mx-auto bg-base-100 shadow-xl border-4 border-[#d2d4e3]">
+                            <figure><img src={item?.img} alt="" /></figure>
                             <div class="card-body">
                                 <h2 class="card-title">
-                                    {item.name}
+                                    {item?.name}
                                     <div class="badge badge-primary">NEW</div>
                                 </h2>
                                 <div class=" justify-start">
-                                    <p >{item.discription}Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                    <p className='my-[6px] font-bold'>Price : {item.price}</p>
-                                    <p>Available Quantity : {item.availqunity}</p>
-                                    <p> Minimum Order quantity : {item.minOrderquntity}</p>
+                                    <p >{item?.discription}Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                    <p className='my-[6px] font-bold'>Price : {item?.price}</p>
+                                    <p>Available Quantity : {item?.availqunity}</p>
+                                    <p> Minimum Order quantity : {item?.minOrderquntity}</p>
 
                                 </div>
                             </div>
@@ -55,52 +91,77 @@ const Purchase = () => {
                         <div className=' lg:p-[30px]'>
                             <div className='p-[20px] shadow-xl border-4 border-[#d2d4e3] bg-slate-100 rounded-xl'>
                                 {/* user info */}
-                                <div className='bg-[#ffffff] p-[10px] lg:flex lg:justify-start justify-between'>
+                                <div className='bg-[#ffffff] p-[10px] lg:flex lg:justify-start justify-between mb-[12px]'>
                                     <div class="flex items-center">
                                         <div class="avatar">
                                             <div class="mask mask-squircle w-12 h-12">
-                                                <img className='border-4 border-[#d2d4e3]' src={user.photoURL} alt="Img" />
+                                                <img className='border-4 border-[#37cdbe]' src={user?.photoURL} alt="Img" />
                                             </div>
                                         </div>
                                         <div className=' mx-[20px]'>
                                             <span class="badge badge-ghost badge-sm">Email</span>
                                             <br />
-                                            <div class="font-bold">{user.displayName}</div>
+                                            <div class="font-bold">{user?.displayName}</div>
                                         </div>
                                     </div>
                                     <div className='lg:mx-[20px]  my-[10px] lg:my-[0]'>
                                         <span class="badge badge-ghost badge-sm">Email</span>
                                         <br />
-                                        {user.email}</div>
+                                        {user?.email}</div>
                                 </div>
-                                <form onSubmit={handleSubmit(onSubmit)}>
+                                <form onSubmit={handleSubmit(onSubmit)} className='lg:w-[670px]'>
                                     {/* name */}
                                     <input {...register("Name")} type='text' hidden value={user?.displayName} className="input input-bordered w-full my-[10px]" />
                                     {/* email */}
                                     <input {...register("email")} type='text' hidden value={user?.email} className="input input-bordered w-full my-[10px]" />
-                                    {/* Education*/}
-                                    <input {...register("Education")} placeholder='Education' type='text' className="input input-bordered w-full my-[10px]" />
+
+                                    {/* quentity  */}
+                                    <input {...register("quentity", {
+                                        required: {
+                                            value: true
+                                        }
+                                    }
+                                    )} placeholder='Quntity' type='number' className="input input-bordered w-full my-[10px]" />
+
+                                    {/* Reciver Name */}
+                                    <input {...register("ReciverName", {
+                                        required: {
+                                            value: true
+                                        }
+                                    }
+                                    )} placeholder='Reciver Name' type='text' className="input input-bordered w-full my-[10px]" />
+                                    <label className="w-full">
+                                        {errors.ReciverName?.type === 'required' && 'Reciver Name is Requierd'}
+                                    </label>
                                     {/*location*/}
-                                    <input {...register("location")} placeholder='location' type='text' className="input input-bordered w-full my-[10px]" />
+                                    <input {...register("Address", {
+                                        required: {
+                                            value: true
+                                        }
+                                    })} placeholder='Address' type='text' className="input input-bordered w-full my-[10px]" />
+                                    <label className="w-full">
+                                        {errors.Address?.type === 'required' && 'Address is Requierd'}
+                                    </label>
                                     {/* Phone Number  */}
-                                    <input {...register("PhoneNumber")} placeholder='Phone Number ' type='text' className="input input-bordered w-full my-[10px]" />
-                                    {/* profile link */}
-                                    <input {...register("LinkedInprofilelink")} placeholder='profile link' type='text' className="input input-bordered w-full my-[10px]" />
+                                    <input {...register("PhoneNumber", {
+                                        required: {
+                                            value: true
+                                        }
+                                    })} placeholder='Phone Number ' type='text' className="input input-bordered w-full my-[10px]" />
+                                    <label className="w-full">
+                                        {errors.PhoneNumber?.type === 'required' && 'Phone Number is Requierd'}
+                                    </label>
 
                                     {/* submit btn  */}
                                     <div className="mt-[18px] flex justify-center">
                                         <div>
-                                            <input className="btn btn-accent text-white mx-[10px]" type="submit" value='UPDATE' />
-                                        </div>
-                                        <div>
-                                            <Link to='/dashboard'><button className="btn btn-accent text-white mx-[10px]">ClEAR</button></Link>
+                                            <input className="btn btn-wid px-[50px] text-white mx-[10px]" type="submit" value='Order' />
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
