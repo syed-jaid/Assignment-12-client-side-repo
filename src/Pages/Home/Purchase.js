@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { BsShop } from "react-icons/bs";
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import Navbar from '../../ForAll/Navbar/Navbar';
 
-const Items = () => {
-    const [items, setItems] = useState([]);
+const Purchase = () => {
+    const { _id } = useParams()
+    const [item, setItem] = useState({})
+    const [quantitys, setquntity] = useState('')
 
     useEffect(() => {
-        fetch('http://localhost:5000/items')
+        fetch(`http://localhost:5000/item/${_id}`)
             .then(res => res.json())
-            .then(data => setItems(data))
-    }, []);
-
+            .then(data => {
+                console.log(data)
+                setItem(data);
+                setquntity(data.quantity);
+            })
+    }, [])
     return (
-        <div className='all-items-div'>
-            {
-                items?.map(item =>
+        <div className=''>
+            <Navbar></Navbar>
+            <div className='lg:w-[1170px] mx-auto'>
+                <div class="card w-full shadow-xl border-4 border-primary bg-slate-100 p-[15px] lg:p-[30px]">
                     <div key={item._id} class="card w-full lg:w-80 my-[35px] mx-auto bg-base-100 shadow-xl">
                         <figure><img src={item.img} alt="Shoes" /></figure>
                         <div class="card-body">
@@ -29,15 +35,12 @@ const Items = () => {
                                 <p> Minimum Order quantity : {item.minOrderquntity}</p>
 
                             </div>
-
-                            <div class="card-actions justify-center">
-                                <Link to={'/purchase/' + item._id}><button class="btn btn-outline w-full" >Purchase <BsShop className='mx-[7px] text-lg' /></button></Link>
-                            </div>
                         </div>
-                    </div>)
-            }
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
 
-export default Items;
+export default Purchase;

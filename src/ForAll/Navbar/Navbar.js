@@ -17,7 +17,7 @@ const Navbar = () => {
         <li><Link to='/about' className='font-semibold text-cyan-500'>ABOUT ME</Link></li>
     </>
     return (
-        <div className="navbar mx-auto lg:px-[180px] bg-base-100">
+        <div className="navbar mx-auto lg:w-[1170px]  bg-base-100">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
@@ -36,8 +36,8 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user ? <p onClick={() => signOut(auth).then(navigate('/'), localStorage.removeItem('accessToken'))} className="btn btn-outline font-bold mr-[12px]" to='/logIn'>LOG OUT <FiLogOut className='mx-[7px] text-xl' /></p> : <>
-                        <Link className="btn btn-outline font-bold mr-[12px]" to='/logIn'>LOG IN <FiLogIn className='mx-[7px] text-xl' /></Link>
+                    user ? <p onClick={() => signOut(auth).then(navigate('/'), localStorage.removeItem('accessToken'))} className="btn btn-outline font-bold " to='/logIn'>LOG OUT <FiLogOut className='mx-[7px] text-xl' /></p> : <>
+                        <Link className="btn btn-outline font-bold " to='/logIn'>LOG IN <FiLogIn className='mx-[7px] text-xl' /></Link>
                     </>
                 }
             </div>

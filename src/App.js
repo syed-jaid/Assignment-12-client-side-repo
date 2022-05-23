@@ -1,11 +1,7 @@
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { Route, Routes } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 import './App.css';
 import LogIn from './Auth/LogIn';
-import Requeird from './Auth/Requeird';
 import SignUp from './Auth/SignUp';
-import auth from './firebase.init';
 import NotFound from './ForAll/NotFound';
 import AboutMe from './Pages/AboutMe/AboutMe';
 import Blogs from './Pages/Blogs/Blogs';
@@ -19,6 +15,7 @@ import MyOrders from './Pages/Dashboard/UnderDashBoard/MyOrders';
 import MyProfile from './Pages/Dashboard/UnderDashBoard/MyProfile';
 import Update from './Pages/Dashboard/UnderDashBoard/Update';
 import Home from './Pages/Home/Home';
+import Purchase from './Pages/Home/Purchase';
 
 function App() {
 
@@ -26,6 +23,7 @@ function App() {
     <div >
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/purchase/:_id' element={<Purchase></Purchase>}></Route>
         <Route path='/dashboard' element={<Dashboard></Dashboard>}>
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path='myorders' element={<MyOrders></MyOrders>}></Route>

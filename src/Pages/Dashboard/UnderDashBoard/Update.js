@@ -2,7 +2,6 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../../firebase.init';
 
 const Update = () => {
@@ -23,8 +22,9 @@ const Update = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    alert('Your Profile is Updated')
                     reset()
+                    alert('Your Profile is Updated')
+
                 }
             })
     }
