@@ -2,14 +2,13 @@ import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Navbar from '../../ForAll/Navbar/Navbar';
 
 const Purchase = () => {
     const { _id } = useParams()
     const [item, setItem] = useState({})
-    const [quantity, setquntity] = useState(false)
 
     const navigate = useNavigate('')
 
@@ -46,11 +45,23 @@ const Purchase = () => {
 
 
     const onSubmit = data => {
-        console.log(typeof item.availqunity, typeof data.quentity)
+        console.log()
+        const order = {
+            Name: data.Name,
+            email: data.email,
+            quentity: data.quentity,
+            ReciverName: data.ReciverName,
+            Address: data.Address,
+            PhoneNumber: data.PhoneNumber,
+            itemName: item.name,
+            discription: item.discription,
+            img: item.img,
+            price: item.price,
+        }
         const inputQunentity = parseFloat(data.quentity);
         const minOrderquntity = item.minOrderquntity;
         const availqunity = item.availqunity;
-        console.log(availqunity)
+
         if (inputQunentity < minOrderquntity) {
             alert("You can not order lase then 1 pic")
         }
@@ -58,7 +69,22 @@ const Purchase = () => {
             alert("You can not order more then 12 pic")
         }
         else {
-            alert('yes')
+            // /order
+            fetch('http://localhost:5000/order', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(order) // body data type must match "Content-Type" header
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged) {
+                        reset()
+                        alert('Thanks for you Order')
+
+                    }
+                })
         }
     }
 
@@ -67,7 +93,7 @@ const Purchase = () => {
             <Navbar></Navbar>
             <div className='lg:w-[1170px] mx-auto'>
                 {/* main  */}
-                <div class="card w-full shadow-xl border-4 border-[#545964] bg-slate-100 p-[15px] lg:p-[25px]">
+                <div class="card w-full shadow-xl bg-slate-100 p-[15px] lg:p-[25px]">
 
                     <div className='lg:flex'>
                         {/* items info  */}

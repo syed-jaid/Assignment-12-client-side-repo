@@ -21,10 +21,10 @@ const Dashboard = () => {
                         <li><Link to='/dashboard'>My Profile</Link></li>
                         <li><Link to='/dashboard/myorders'>My Orders</Link></li>
                         <li><Link to='/dashboard/addReviews'>Add A Review</Link></li>
-                        {/* <li><Link to='/dashboard/manageAllOrders'>Manage All Orders</Link></li>
+                        <li><Link to='/dashboard/manageAllOrders'>Manage All Orders</Link></li>
                         <li><Link to='/dashboard/addaProducts'>Add A Product</Link></li>
                         <li><Link to='/dashboard/makeAdmin'>Make Admin</Link></li>
-                        <li><Link to='/dashboard/manageProducts'>Manage Products</Link></li> */}
+                        <li><Link to='/dashboard/manageProducts'>Manage Products</Link></li>
                     </ul>
                 </div>
             </div>

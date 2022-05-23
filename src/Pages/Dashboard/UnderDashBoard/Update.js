@@ -53,7 +53,7 @@ const Update = () => {
                             <input className="btn btn-accent text-white mx-[10px]" type="submit" value='UPDATE' />
                         </div>
                         <div>
-                            <Link to='/dashboard'><button className="btn btn-accent text-white mx-[10px]">ClEAR</button></Link>
+                            <Link to='/dashboard'><button className="btn btn-accent text-white mx-[10px]">GO BACK</button></Link>
                         </div>
                     </div>
                 </form>

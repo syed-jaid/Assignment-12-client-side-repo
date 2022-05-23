@@ -6,7 +6,7 @@
         "price": "price",
         "quantity": "quantity",
         "minOrderquntity": 4,
-        "availqunity": "32",
+        "availqunity": 17,
         "supplierName": "supplierName"
     },
     {
@@ -16,7 +16,7 @@
         "price": "price",
         "quantity": "quantity",
         "minOrderquntity": 4,
-        "availqunity": "32",
+        "availqunity": 82,
         "supplierName": "supplierName"
     },
     {
@@ -26,7 +26,7 @@
         "price": "price",
         "quantity": "quantity",
         "minOrderquntity": 4,
-        "availqunity": "32",
+        "availqunity": 31,
         "supplierName": "supplierName"
     },
     {
@@ -36,7 +36,7 @@
         "price": "price",
         "quantity": "quantity",
         "minOrderquntity": 4,
-        "availqunity": "32",
+        "availqunity": 31,
         "supplierName": "supplierName"
     },
     {
@@ -46,7 +46,7 @@
         "price": "price",
         "quantity": "quantity",
         "minOrderquntity": 4,
-        "availqunity": "32",
+        "availqunity": 56,
         "supplierName": "supplierName"
     },
     {
@@ -56,7 +56,7 @@
         "price": "price",
         "quantity": "quantity",
         "minOrderquntity": 4,
-        "availqunity": "32",
+        "availqunity": 32,
         "supplierName": "supplierName"
     }
 ]

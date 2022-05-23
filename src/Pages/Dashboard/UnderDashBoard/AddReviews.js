@@ -1,7 +1,6 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 const AddReviews = () => {
@@ -11,7 +10,7 @@ const AddReviews = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-        console.log(data)
+
         fetch('http://localhost:5000/review', {
             method: 'post',
             headers: {

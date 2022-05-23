@@ -13,6 +13,7 @@ const Navbar = () => {
         {
             user?.email && <li><Link to='/dashboard' className='font-semibold text-cyan-500'>DASHBOARD</Link></li>
         }
+
         <li><Link to='/blogs' className='font-semibold text-cyan-500'>BLOG</Link></li>
         <li><Link to='/about' className='font-semibold text-cyan-500'>ABOUT ME</Link></li>
     </>
