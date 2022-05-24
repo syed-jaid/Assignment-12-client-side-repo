@@ -4,81 +4,105 @@ import React, { useEffect, useState } from 'react';
 
 const CheckourForm = ({ item }) => {
 
-    // const [cardError, setCardError] = useState('');
-    // const stripe = useStripe();
-    // const elements = useElements();
-    // const [clientSecret, setClientSecret] = useState('');
-    // const [success, setSuccess] = useState('');
-    // const [transactionId, setTransactionId] = useState('');
-    // const [processing, setProcessing] = useState(false);
+    const [cardError, setCardError] = useState('');
+    const stripe = useStripe();
+    const elements = useElements();
+    const [clientSecret, setClientSecret] = useState('');
+    const [success, setSuccess] = useState('');
+    const [transactionId, setTransactionId] = useState('');
+    const [processing, setProcessing] = useState(false);
 
-    // const { _id, price } = item;
+    const price = item?.price * item?.quentity;
+    const _id = item?._id;
+    const Name = item?._id;
+    const email = item?.email;
 
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/create-payment-intent', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json',
-    //             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    //         },
-    //         body: JSON.stringify({ price })
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data?.clientSecret) {
-    //                 setClientSecret(data.clientSecret);
-    //             }
-    //         });
+    useEffect(() => {
+        fetch('http://localhost:5000/create-payment-intent', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify({ price })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data?.clientSecret) {
+                    setClientSecret(data.clientSecret);
+                }
+            });
 
-    // }, [price])
+    }, [price])
 
-    // const handleSubmit = async (event) => {
-    //     event.preventDefault();
-    //     if (!stripe || !elements) {
-    //         return;
-    //     }
 
-    //     const card = elements.getElement(CardElement);
-    //     if (card === null) {
-    //         return;
-    //     }
 
-    //     const { error, paymentMethod } = await stripe.createPaymentMethod({
-    //         type: 'card',
-    //         card
-    //     });
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        if (!stripe || !elements) {
+            return;
+        }
 
-    //     setCardError(error?.message || '');
+        const card = elements.getElement(CardElement);
+        if (card === null) {
+            return;
+        }
 
-    //     const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
-    //         clientSecret,
-    //         {
-    //             payment_method: {
-    //                 card: card,
-    //                 billing_details: {
-    //                     name: '',
-    //                     email: ''
-    //                 },
-    //             },
-    //         },
-    //     );
+        const { error, paymentMethod } = await stripe.createPaymentMethod({
+            type: 'card',
+            card
+        });
 
-    //     if (intentError) {
-    //         setCardError(intentError?.message);
-    //         setProcessing(false);
-    //     }
-    //     else {
-    //         setCardError('');
-    //         setTransactionId(paymentIntent.id);
-    //         console.log(paymentIntent);
-    //         setSuccess('Congrats! Your payment is completed.')
+        setCardError(error?.message || '');
 
-    //     }
+        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: Name,
+                        email: email
+                    },
+                },
+            },
+        );
 
-    // }
+        if (intentError) {
+            setCardError(intentError?.message);
+            setProcessing(false);
+        }
+        else {
+            setCardError('');
+            setTransactionId(paymentIntent.id);
+            console.log(paymentIntent);
+            setSuccess('Congrats! Your payment is completed.')
+
+            //store payment on database
+            const payment = {
+                Product: _id,
+                transactionId: paymentIntent.id
+            }
+
+            fetch(`http://localhost:5000/orderPay/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(payment)
+            }).then(res => res.json())
+                .then(data => {
+                    setProcessing(false);
+                    console.log(data);
+                })
+        }
+
+    }
+
     return (
-        <div className='shadow-xl lg:w-[300px] border-1 rounded-lg border-2 border-sky-200 p-[15px] mx-auto'>
-            {/* <form onSubmit={handleSubmit}>
+        <div className='shadow-xl border-1 lg:w-[400px] w-full rounded-lg border-2 bg-base-100 p-[15px] mx-auto'>
+            <form onSubmit={handleSubmit}>
                 <CardElement
                     options={{
                         style: {
@@ -98,10 +122,16 @@ const CheckourForm = ({ item }) => {
                 <button className="btn btn-sm my-[3px] px-[15px]" type="submit" disabled={!stripe}>
                     Pay
                 </button>
-            </form> */}
-            {/* {
+            </form>
+            {
                 cardError && <p className='text-red-500'>{cardError}</p>
-            } */}
+            }
+            {
+                success && <div className='text-green-500'>
+                    <p>{success}  </p>
+                    <p>Your transaction Id: <span className="text-orange-500 font-bold">{transactionId}</span> </p>
+                </div>
+            }
         </div>
     );
 };

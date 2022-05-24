@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Navbar from '../../ForAll/Navbar/Navbar';
 
 const Dashboard = () => {
     return (
         <div>
-            <Navbar></Navbar>
             <div className="drawer drawer-mobile lg:w-[1170px] mx-auto">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content ">

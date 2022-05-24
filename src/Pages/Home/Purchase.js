@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 import auth from '../../firebase.init';
-import Navbar from '../../ForAll/Navbar/Navbar';
 
 
 const Purchase = () => {
@@ -83,8 +83,8 @@ const Purchase = () => {
                 .then(data => {
                     if (data.acknowledged) {
                         reset()
-                        alert('Thanks for you Order')
-
+                        // alert('Thanks for you Order')
+                        toast.success('Order is taken')
                     }
                 })
         }
@@ -92,7 +92,6 @@ const Purchase = () => {
 
     return (
         <div>
-            <Navbar></Navbar>
             <div className='lg:w-[1170px] mx-auto'>
                 {/* main  */}
                 <div class="card w-full shadow-xl bg-slate-100 p-[15px] lg:p-[25px]">
@@ -195,6 +194,7 @@ const Purchase = () => {
 
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

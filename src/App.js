@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import LogIn from './Auth/LogIn';
 import SignUp from './Auth/SignUp';
+import Navbar from './ForAll/Navbar/Navbar';
 import NotFound from './ForAll/NotFound';
 import AboutMe from './Pages/AboutMe/AboutMe';
 import Blogs from './Pages/Blogs/Blogs';
@@ -19,12 +20,15 @@ import Update from './Pages/Dashboard/UnderDashBoard/Update';
 import Home from './Pages/Home/Home';
 import Payment from './Pages/Home/Payment';
 import Purchase from './Pages/Home/Purchase';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const queryClient = new QueryClient()
 function App() {
 
   return (
     <div >
+      <Navbar></Navbar>
       <QueryClientProvider client={queryClient}>
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>

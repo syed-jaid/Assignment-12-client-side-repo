@@ -6,7 +6,6 @@ import auth from '../firebase.init';
 import Spinner from '../ForAll/Spinner';
 import { FcGoogle } from "react-icons/fc";
 import useToken from '../hook/useToken';
-import Navbar from '../ForAll/Navbar/Navbar';
 
 const LogIn = () => {
 
@@ -50,7 +49,6 @@ const LogIn = () => {
 
     return (
         <div>
-            <Navbar></Navbar>
             <div className='flex h-screen justify-center  my-[50px]'>
                 <div className="card h-[554px] w-full max-w-sm shadow-2xl ">
                     <div className="card-body">

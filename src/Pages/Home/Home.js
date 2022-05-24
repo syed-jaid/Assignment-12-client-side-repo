@@ -1,6 +1,5 @@
 import React from 'react';
 import Carousel from './Carousel';
-import Navbar from '../../ForAll/Navbar/Navbar';
 import Items from './Items';
 import './Home.css'
 import Extra1 from './Extra1';
@@ -10,7 +9,6 @@ import Summery from './Summery';
 const Home = () => {
     return (
         <div>
-            <Navbar></Navbar>
             <div className='lg:w-[1170px] mx-auto'>
                 {/* Carousel part  */}
                 <Carousel></Carousel>
