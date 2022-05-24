@@ -17,6 +17,7 @@ import MyOrders from './Pages/Dashboard/UnderDashBoard/MyOrders';
 import MyProfile from './Pages/Dashboard/UnderDashBoard/MyProfile';
 import Update from './Pages/Dashboard/UnderDashBoard/Update';
 import Home from './Pages/Home/Home';
+import Payment from './Pages/Home/Payment';
 import Purchase from './Pages/Home/Purchase';
 
 const queryClient = new QueryClient()
@@ -28,6 +29,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/purchase/:_id' element={<Purchase></Purchase>}></Route>
+          <Route path='/payment/:_id' element={<Payment></Payment>}></Route>
           <Route path='/dashboard' element={<Dashboard></Dashboard>}>
             <Route index element={<MyProfile></MyProfile>}></Route>
             <Route path='myorders' element={<MyOrders></MyOrders>}></Route>

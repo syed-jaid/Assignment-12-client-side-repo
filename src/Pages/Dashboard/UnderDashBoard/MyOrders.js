@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Spinner from '../../../ForAll/Spinner';
 
@@ -45,15 +45,21 @@ const MyOrders = () => {
                         <figure><img src={item?.img} alt="Shoes" /></figure>
                         <div class="card-body">
                             <h2 class="card-title">
-                                {item?.name}
-                                <div class="badge badge-primary">NEW</div>
+                                Product Name : {item?.itemName}
+                                {
+                                    item.paid === 'panding' ? <div class="badge badge-primary pb-[3px]">{item.paid}</div> : <div class="badge badge-primary pb-[3px]">paid</div>
+                                }
                             </h2>
                             <div class=" justify-start">
-                                <p >{item?.discription}Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <p className='my-[6px] font-bold'>Price : {item?.price}</p>
-                                <p>Available Quantity : {item?.availqunity}</p>
-                                <p> Minimum Order quantity : {item?.minOrderquntity}</p>
-
+                                <p className='my-[6px] font-semibold'>Totul Price : {parseFloat(item?.price) * parseFloat(item.quentity)}</p>
+                                <p className='my-[6px] font-semibold'>Quentity : {item.quentity}</p>
+                                <p className='my-[6px] font-semibold'>Reciver Name : {item.ReciverName} - <small>{item.Address}</small></p>
+                                <p className='my-[6px] font-semibold'>Phone Number : <small>{item.PhoneNumber}</small></p>
+                                <small className='mb-[6px] font-semibold'>User-email:{item.email}</small>
+                                <p className='my-[6px] font-semibold'></p>
+                                {
+                                    item.paid === 'panding' && <Link to={'/payment/' + item._id}><button className="btn btn-wid px-[50px] text-white " >Pay</button></Link>
+                                }
                             </div>
                         </div>
                     </div>)}

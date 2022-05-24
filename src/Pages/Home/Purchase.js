@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Navbar from '../../ForAll/Navbar/Navbar';
 
+
 const Purchase = () => {
     const { _id } = useParams()
     const [item, setItem] = useState({})
@@ -57,6 +58,7 @@ const Purchase = () => {
             discription: item.discription,
             img: item.img,
             price: item.price,
+            paid: 'panding'
         }
         const inputQunentity = parseFloat(data.quentity);
         const minOrderquntity = item.minOrderquntity;
@@ -112,6 +114,8 @@ const Purchase = () => {
 
                                 </div>
                             </div>
+
+
                         </div>
                         {/* form for the pay */}
                         <div className=' lg:p-[30px]'>
@@ -188,6 +192,7 @@ const Purchase = () => {
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
