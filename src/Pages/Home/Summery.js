@@ -11,23 +11,23 @@ const Summery = () => {
             <div className='lg:flex justify-between' >
                 <div className='text-center  p-[20px] rounded-lg border-4 border-[#333333]  lg:border-[#ffffff] my-[30px]'>
                     <FcGlobe className='text-7xl mx-auto' />
-                    <h1 className='text-4xl font-bold font-sans'>94</h1>
+                    <h1 className='text-4xl font-bold font-sans'>44</h1>
                     <h1 className='text-4xl font-bold font-sans text-[#37cdbe]'>Cousntries</h1>
                 </div>
                 <div className='text-center  p-[20px] rounded-lg border-4 border-[#333333]  lg:border-[#ffffff] my-[30px]'>
                     <FaPeopleArrows className='text-7xl mx-auto' />
-                    <h1 className='text-4xl font-bold font-sans'>3.1 Br</h1>
+                    <h1 className='text-4xl font-bold font-sans'>3.1 B</h1>
                     <h1 className='text-4xl font-bold font-sans text-[#37cdbe]'>CUSTOMERS</h1>
                 </div>
                 <div className='text-center  p-[20px] rounded-lg border-4 border-[#333333]  lg:border-[#ffffff] my-[30px]'>
                     <VscFeedback className='text-7xl mx-auto' />
-                    <h1 className='text-4xl font-bold font-sans'>2.4 Br</h1>
+                    <h1 className='text-4xl font-bold font-sans'>2.4 B</h1>
                     <h1 className='text-4xl font-bold font-sans text-[#37cdbe]'>REVIEWS</h1>
                 </div>
                 <div className='text-center  p-[20px] rounded-lg border-4 border-[#333333]  lg:border-[#ffffff] my-[30px]'>
                     <FcComboChart className='text-7xl mx-auto' />
-                    <h1 className='text-4xl font-bold font-sans'>1.4 tr</h1>
-                    <h1 className='text-4xl font-bold font-sans text-[#37cdbe]'>BRAND VALUE</h1>
+                    <h1 className='text-4xl font-bold font-sans'>1.4 T</h1>
+                    <h1 className='text-4xl font-bold font-sans text-[#37cdbe]'>BAND VALUE</h1>
                 </div>
             </div>
             <div class="divider">AND</div>

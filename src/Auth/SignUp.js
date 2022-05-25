@@ -30,16 +30,19 @@ const SignUp = () => {
     // signIn Wit google 
     const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth)
 
-    const [token] = useToken(guser || user)
+
     // react form 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     const onSubmit = async data => {
+        console.log(data)
         await createUserWithEmailAndPassword(data.email, data.password, sendEmailVerification(true));
         await updateProfile(data.name);
     };
 
     let signInError;
+
+    const [token] = useToken(guser || user)
 
     if (gerror || error || UpdatError || Verificationerror) {
         signInError = <p className='text-red-500'><small>{error?.message}{gerror?.message}</small></p>

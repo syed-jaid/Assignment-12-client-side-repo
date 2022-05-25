@@ -6,13 +6,16 @@ import auth from '../../../firebase.init';
 const MyProfile = () => {
     const [user] = useAuthState(auth)
     const [userInfo, setUserInfo] = useState([]);
+    const [username, setUserName] = useState([]);
     useEffect(() => {
         fetch(`http://localhost:5000/userProfile/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setUserInfo(data.user)
+                setUserName(data)
             })
     }, [])
+
     return (
         <div className='p-[30px]'>
             <div class="card w-full shadow-xl border-4 border-primary bg-slate-100">
@@ -23,7 +26,7 @@ const MyProfile = () => {
                 <h2 class=" text-3xl text-center">My Profile</h2>
                 <div class="card-body ">
 
-                    <p className='font-semibold'>Name : {user?.displayName}</p>
+                    <p className='font-semibold'>Name : {username?.name}</p>
                     <p className='font-semibold'>Email : {user?.email}</p>
                     {
                         userInfo?.Education ? <p className='font-semibold'>Education : {userInfo.Education}</p> : ''

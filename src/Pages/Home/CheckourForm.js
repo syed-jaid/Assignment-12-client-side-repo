@@ -11,7 +11,6 @@ const CheckourForm = ({ item }) => {
     const [clientSecret, setClientSecret] = useState('');
     const [success, setSuccess] = useState('');
     const [transactionId, setTransactionId] = useState('');
-    const [processing, setProcessing] = useState(false);
 
     const price = item?.price * item?.quentity;
     const _id = item?._id;
@@ -71,14 +70,12 @@ const CheckourForm = ({ item }) => {
 
         if (intentError) {
             setCardError(intentError?.message);
-            setProcessing(false);
         }
         else {
             setCardError('');
             setTransactionId(paymentIntent.id);
             console.log(paymentIntent);
-            setSuccess('Congrats! Your payment is completed.')
-            toast.success('Payment is done')
+            setSuccess(' Your payment is completed.')
 
             //store payment on database
             const payment = {
@@ -95,8 +92,8 @@ const CheckourForm = ({ item }) => {
                 body: JSON.stringify(payment)
             }).then(res => res.json())
                 .then(data => {
-                    setProcessing(false);
                     console.log(data);
+                    toast.success("Your payment is completed")
                 })
         }
 

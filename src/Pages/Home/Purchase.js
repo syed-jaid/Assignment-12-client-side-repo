@@ -65,10 +65,10 @@ const Purchase = () => {
         const availqunity = item.availqunity;
 
         if (inputQunentity < minOrderquntity) {
-            alert("You can not order lase then 1 pic")
+            alert(`You can not order lase then ${minOrderquntity} pic`)
         }
         else if (inputQunentity > availqunity) {
-            alert("You can not order more then 12 pic")
+            alert(`You can not order more then ${availqunity} pic`)
         }
         else {
             // /order
@@ -83,7 +83,6 @@ const Purchase = () => {
                 .then(data => {
                     if (data.acknowledged) {
                         reset()
-                        // alert('Thanks for you Order')
                         toast.success('Order is taken')
                     }
                 })

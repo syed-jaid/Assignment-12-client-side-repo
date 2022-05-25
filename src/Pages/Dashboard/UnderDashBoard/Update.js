@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
@@ -9,6 +9,18 @@ const Update = () => {
     const [user] = useAuthState(auth)
     // react form 
     const { register, handleSubmit, reset } = useForm();
+
+    const [userInfo, setUserInfo] = useState([]);
+    const [username, setUserName] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/userProfile/${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setUserInfo(data.user)
+                setUserName(data)
+            })
+    }, [])
 
     const onSubmit = data => {
         console.log(data)
@@ -35,7 +47,7 @@ const Update = () => {
                 <h2 class=" text-4xl text-center">My Profile</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {/* name */}
-                    <input {...register("Name")} type='text' value={user?.displayName} className="input input-bordered w-full my-[14px]" />
+                    <input {...register("Name")} type='text' value={username?.name} className="input input-bordered w-full my-[14px]" />
                     {/* email */}
                     <input {...register("email")} type='text' value={user?.email} className="input input-bordered w-full my-[14px]" />
                     {/* Education*/}

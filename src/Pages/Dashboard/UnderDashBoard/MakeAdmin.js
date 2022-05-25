@@ -21,6 +21,7 @@ const MakeAdmin = () => {
     //         localStorage.removeItem('accessToken')
     //     }
     //     return res.json()
+    // .then(data=>setUser(data))
     // }))
 
     // console.log(users)
@@ -32,7 +33,8 @@ const MakeAdmin = () => {
             .then(res => res.json())
             .then(data => setUser(data))
     }, [])
-    console.log(users)
+
+
     const makeAdmin = (email) => {
 
         fetch(`http://localhost:5000/user/admin/${email}`, {
@@ -55,7 +57,6 @@ const MakeAdmin = () => {
     // if (isLoading) {
 
     // }
-
     return (
         <div>
             <div className="overflow-x-auto m-[30]">
