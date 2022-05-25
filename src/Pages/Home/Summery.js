@@ -6,32 +6,32 @@ import { VscFeedback } from "react-icons/vsc";
 
 const Summery = () => {
     return (
-        <div className='lg:mt-[100px] lg:mb-[100px] mt-[50px] '>
-            <h1 className='text-center text-5xl font-semibold font-sans mb-[40px]'>WE PROVIDED THE CUSTOMERS MILLIONS OF SERVICES </h1>
+        <div className='lg:mt-[200px] lg:mb-[200px] mt-[50px] '>
+            <h1 className='text-center text-4xl font-semibold font-sans mb-[40px]'>WE PROVIDED THE CUSTOMERS MILLIONS OF SERVICES </h1>
             <div className='lg:flex justify-between' >
-                <div className='text-center  p-[20px] rounded-lg border-4 border-[#333333]  lg:border-[#ffffff] my-[30px]'>
+                <div className='text-center  p-[20px] rounded-lg border-4 border-[#333333]  lg:border-[#ffffff] my-[30px] shadow-lg'>
                     <FcGlobe className='text-7xl mx-auto' />
                     <h1 className='text-4xl font-bold font-sans'>44</h1>
                     <h1 className='text-4xl font-bold font-sans text-[#37cdbe]'>Cousntries</h1>
                 </div>
-                <div className='text-center  p-[20px] rounded-lg border-4 border-[#333333]  lg:border-[#ffffff] my-[30px]'>
+                <div className='text-center  p-[20px] rounded-lg border-4 border-[#333333]  lg:border-[#ffffff] my-[30px] shadow-lg'>
                     <FaPeopleArrows className='text-7xl mx-auto' />
                     <h1 className='text-4xl font-bold font-sans'>3.1 B</h1>
                     <h1 className='text-4xl font-bold font-sans text-[#37cdbe]'>CUSTOMERS</h1>
                 </div>
-                <div className='text-center  p-[20px] rounded-lg border-4 border-[#333333]  lg:border-[#ffffff] my-[30px]'>
+                <div className='text-center  p-[20px] rounded-lg border-4 border-[#333333]  lg:border-[#ffffff] my-[30px] shadow-lg'>
                     <VscFeedback className='text-7xl mx-auto' />
                     <h1 className='text-4xl font-bold font-sans'>2.4 B</h1>
                     <h1 className='text-4xl font-bold font-sans text-[#37cdbe]'>REVIEWS</h1>
                 </div>
-                <div className='text-center  p-[20px] rounded-lg border-4 border-[#333333]  lg:border-[#ffffff] my-[30px]'>
+                <div className='text-center  p-[20px] rounded-lg border-4 border-[#333333]  lg:border-[#ffffff] my-[30px] shadow-lg'>
                     <FcComboChart className='text-7xl mx-auto' />
                     <h1 className='text-4xl font-bold font-sans'>1.4 T</h1>
                     <h1 className='text-4xl font-bold font-sans text-[#37cdbe]'>BAND VALUE</h1>
                 </div>
             </div>
-            <div class="divider">AND</div>
-            <div class="card w-full border-2 border-[#333333] my-[50px] shadow-lg shadow-[#71adca]">
+            <div class="divider ">AND</div>
+            <div class="card w-full border-2 border-[#333333] my-[50px] shadow-lg">
                 <div class="card-body ">
                     <h2 class="card-title text-[#37cdbe]">For any kind of help !</h2>
                     <p className='flex justify-start lg:pr-[200px]'>We are using cookies for no reason. Lorem ipsum dolor sit amet consectetur adipisicing elit. A sit aut voluptates non animi quasi iure! Neque nihil doloremque recusandae velit ex eaque esse aperiam odio repudiandae ullam, quis voluptate.</p>

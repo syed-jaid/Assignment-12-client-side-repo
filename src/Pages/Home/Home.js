@@ -6,6 +6,7 @@ import Extra1 from './Extra1';
 import Footer from '../../ForAll/Footer/Footer';
 import Summery from './Summery';
 import Review from './Review';
+import Extar2 from './Extar2';
 
 const Home = () => {
     return (
@@ -20,6 +21,9 @@ const Home = () => {
                 <Extra1></Extra1>
                 {/* review part  */}
                 <Review></Review>
+                {/* extra part  */}
+                <Extar2></Extar2>
+
                 {/* Business Summery  */}
                 <Summery></Summery>
             </div>
