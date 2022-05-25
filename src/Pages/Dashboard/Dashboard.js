@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import auth from '../../firebase.init';
+import Spinner from '../../ForAll/Spinner';
 
 const Dashboard = () => {
+
+    const [user, setuser] = useState([])
+    const [logUser, Loading] = useAuthState(auth)
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${logUser?.email}`)
+            .then(res => res.json())
+            .then(data => setuser(data))
+    }, [])
+
+    if (Loading) {
+        return <Spinner></Spinner>
+    }
+    // ewrusdnei
     return (
         <div>
             <div className="drawer drawer-mobile lg:w-[1170px] mx-auto">
@@ -15,15 +32,21 @@ const Dashboard = () => {
                 </div>
                 <div className="drawer-side">
                     <label for="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 overflow-y-auto w-48 bg-base-200 text-base-content">
-                        <li><Link to='/dashboard'>My Profile</Link></li>
-                        <li><Link to='/dashboard/myorders'>My Orders</Link></li>
-                        <li><Link to='/dashboard/addReviews'>Add A Review</Link></li>
-                        <li><Link to='/dashboard/manageAllOrders'>Manage All Orders</Link></li>
-                        <li><Link to='/dashboard/addaProducts'>Add A Product</Link></li>
-                        <li><Link to='/dashboard/makeAdmin'>Make Admin</Link></li>
-                        <li><Link to='/dashboard/manageProducts'>Manage Products</Link></li>
-                    </ul>
+                    {
+                        user?.role === 'admin' ? <ul className="menu p-4 overflow-y-auto w-48 bg-base-200 text-base-content">
+                            <li><Link to='/dashboard'>My Profile</Link></li>
+                            <li><Link to='/dashboard/manageAllOrders'>Manage All Orders</Link></li>
+                            <li><Link to='/dashboard/addaProducts'>Add A Product</Link></li>
+                            <li><Link to='/dashboard/makeAdmin'>Make Admin</Link></li>
+                            <li><Link to='/dashboard/manageProducts'>Manage Products</Link></li>
+                        </ul> : <ul className="menu p-4 overflow-y-auto w-48 bg-base-200 text-base-content">
+                            <ul className="menu p-4 overflow-y-auto w-48 bg-base-200 text-base-content">
+                                <li><Link to='/dashboard'>My Profile</Link></li>
+                                <li><Link to='/dashboard/myorders'>My Orders</Link></li>
+                                <li><Link to='/dashboard/addReviews'>Add Review</Link></li>
+                            </ul>
+                        </ul>
+                    }
                 </div>
             </div>
             <ToastContainer />

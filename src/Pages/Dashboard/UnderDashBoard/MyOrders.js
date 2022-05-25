@@ -61,7 +61,13 @@ const MyOrders = () => {
                         <h2 class="card-title">
                             Product Name : {item?.itemName}
                             {
-                                item?.paid === 'panding' ? <div class="badge badge-primary pb-[3px]">{item?.paid}</div> : <div class="badge badge-primary pb-[3px]">paid</div>
+                                item?.paid === 'panding' && <div class="badge badge-primary pb-[3px]">Unpayid</div>
+                            }
+                            {
+                                item?.paid === 'shipped' && <div class="badge badge-primary pb-[3px]">Shipped</div>
+                            }
+                            {
+                                item?.paid === 'paid' && <div class="badge badge-primary pb-[3px]">Paid</div>
                             }
                         </h2>
                         <div class=" justify-start">
@@ -82,8 +88,14 @@ const MyOrders = () => {
                                     {
                                         item.paid === 'panding' && <Link to={'/payment/' + item?._id}><button className="btn btn-wid px-[40px] text-white " >Pay</button></Link>
                                     }
+                                    {
+                                        item.paid === 'paid' && ''
+                                    }
                                 </div>
-                                <button className="btn btn-wid px-[40px] text-white " onClick={() => deleteItem(item?._id)}>Delete</button>
+                                {
+                                    item?.paid === 'shipped' || item.paid === 'paid' ? '' : <button className="btn btn-wid px-[40px] text-white " onClick={() => deleteItem(item?._id)}>Delete</button>
+                                }
+
                             </div>
 
                         </div>

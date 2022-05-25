@@ -6,7 +6,7 @@ import auth from '../../../firebase.init';
 
 const MakeAdmin = () => {
 
-    // const { Data: userss, refetch } = useQuery('userss', () => fetch(``, {
+    // const { Data: users, refetch } = useQuery('userss', () => fetch(`http://localhost:5000/users`, {
     //     method: 'GET',
     //     headers: {
     //         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -67,7 +67,6 @@ const MakeAdmin = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Admin</th>
-                            <th>Remove</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,7 +76,6 @@ const MakeAdmin = () => {
                                 <td>{user?.name}</td>
                                 <td>{user?.email}</td>
                                 <td>{user?.role !== 'admin' && <button onClick={() => makeAdmin(user.email)} class="btn btn-xs">Make Admin</button>}</td>
-                                <td><button class="btn btn-xs">X</button></td>
                             </tr >
                             )
                         }
