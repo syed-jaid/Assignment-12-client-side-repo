@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 
 const AddReviews = () => {
@@ -22,7 +23,7 @@ const AddReviews = () => {
             .then(data => {
                 if (data.acknowledged) {
                     reset()
-                    alert('Thanks for you Review')
+                    toast.success('Thanks for you Review')
 
                 }
             })
@@ -37,7 +38,7 @@ const AddReviews = () => {
                     {/* email */}
                     <input {...register("email")} type='text' value={user?.email} className="input input-bordered w-full my-[14px]" />
                     {/* discripition */}
-                    <textarea class="textarea w-full textarea-info" placeholder="Bio"></textarea>
+                    <textarea class="textarea w-full textarea-info" placeholder="Discription"></textarea>
                     {/* raing */}
                     <select class="select select-info w-full my-[14px]"{...register("raing")}>
                         <option selected disabled>Rating</option>
