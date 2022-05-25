@@ -32,8 +32,25 @@ const MyOrders = () => {
             })
             .then(data => setitems(data))
     }, [])
-    console.log(items)
 
+    // delete Item api call
+    const deleteItem = (props) => {
+        console.log(props)
+        const confirm = window.confirm('Do you want to Remove it')
+        if (confirm) {
+            fetch(`http://localhost:5000/orders/${props}`, {
+                method: 'Delete',
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        const remaing = items.filter(itme => itme._id !== props)
+                        setitems(remaing)
+                    }
+                })
+        }
+    }
+    console.log(items)
     return (
         <div>
             <h2 class=" text-3xl text-center">My Orders</h2>
@@ -48,15 +65,27 @@ const MyOrders = () => {
                             }
                         </h2>
                         <div class=" justify-start">
+                            {
+                                item?.transactionId && <small className='font-bold'>Transaction Id:
+
+                                    {item.transactionId}</small>
+                            }
                             <p className='my-[6px] font-semibold'>Totul Price : {parseFloat(item?.price) * parseFloat(item.quentity)}</p>
                             <p className='my-[6px] font-semibold'>Quentity : {item?.quentity}</p>
                             <p className='my-[6px] font-semibold'>Reciver Name : {item?.ReciverName} - <small>{item.Address}</small></p>
                             <small className='mb-[6px] font-semibold'>User-email:{item?.email}</small>
                             <p className='my-[6px] font-semibold'></p>
                             <p className='my-[6px] font-semibold'>Phone Number : <small>{item?.PhoneNumber}</small></p>
-                            {
-                                item.paid === 'panding' && <Link to={'/payment/' + item?._id}><button className="btn btn-wid px-[50px] text-white " >Pay</button></Link>
-                            }
+
+                            <div className='flex justify-between'>
+                                <div>
+                                    {
+                                        item.paid === 'panding' && <Link to={'/payment/' + item?._id}><button className="btn btn-wid px-[40px] text-white " >Pay</button></Link>
+                                    }
+                                </div>
+                                <button className="btn btn-wid px-[40px] text-white " onClick={() => deleteItem(item?._id)}>Delete</button>
+                            </div>
+
                         </div>
                     </div>
                 </div>)}

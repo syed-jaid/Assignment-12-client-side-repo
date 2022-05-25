@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 
 const CheckourForm = ({ item }) => {
@@ -77,6 +78,7 @@ const CheckourForm = ({ item }) => {
             setTransactionId(paymentIntent.id);
             console.log(paymentIntent);
             setSuccess('Congrats! Your payment is completed.')
+            toast.success('Payment is done')
 
             //store payment on database
             const payment = {
