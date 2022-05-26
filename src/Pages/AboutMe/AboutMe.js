@@ -23,7 +23,7 @@ const AboutMe = () => {
                                 <br />
                                 Thank you..
                             </p>
-                            <h1 className='text-[18px]'>I  have learn some thing from here : <span className='text-[19px]'>1.HTML 2.CSS 3.JavaScript 4.git 5.Node.js 6.React 7.React Route 8.es6 9.Express.js 10.Mongodb 11.jwt 12.Google firebase 13.Netlify 14.Heroku</span></h1>
+                            <h1 className='text-[18px]'>I  have learn some thing from here : <span className='text-[19px]'>1.HTML 2.CSS 3.JavaScript 4.git 5.Node.js 6.React 7.React Route 8.es6 9.Express.js 10.Mongodb 11.jwt 12.Google firebase 13.Netlify 14.Heroku .</span></h1>
                         </div>
                     </div>
                     <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
