@@ -19,7 +19,7 @@ const Purchase = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/item/${_id}`, {
+        fetch(`https://murmuring-basin-10907.herokuapp.com/item/${_id}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -72,7 +72,7 @@ const Purchase = () => {
         }
         else {
             // /order
-            fetch('http://localhost:5000/order', {
+            fetch('https://murmuring-basin-10907.herokuapp.com/order', {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json'

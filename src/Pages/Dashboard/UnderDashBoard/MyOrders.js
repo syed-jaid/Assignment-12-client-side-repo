@@ -11,7 +11,7 @@ const MyOrders = () => {
     const [items, setitems] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders/${user?.email}`, {
+        fetch(`https://murmuring-basin-10907.herokuapp.com/orders/${user?.email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -36,19 +36,18 @@ const MyOrders = () => {
     // delete Item api call
     const deleteItem = (props) => {
         console.log(props)
-        const confirm = window.confirm('Do you want to Remove it')
-        if (confirm) {
-            fetch(`http://localhost:5000/orders/${props}`, {
-                method: 'Delete',
+
+        fetch(`https://murmuring-basin-10907.herokuapp.com/orders/${props}`, {
+            method: 'Delete',
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    const remaing = items.filter(itme => itme._id !== props)
+                    setitems(remaing)
+                }
             })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        const remaing = items.filter(itme => itme._id !== props)
-                        setitems(remaing)
-                    }
-                })
-        }
+
     }
     console.log(items)
     return (
@@ -93,9 +92,20 @@ const MyOrders = () => {
                                     }
                                 </div>
                                 {
-                                    item?.paid === 'shipped' || item.paid === 'paid' ? '' : <button className="btn btn-wid px-[40px] text-white " onClick={() => deleteItem(item?._id)}>Delete</button>
+                                    item?.paid === 'shipped' || item.paid === 'paid' ? '' : <label for="my-modal-6" class="btn btn-outline px-[30px]">Delete</label>
                                 }
+                                {/* <!-- Put this part before </body> tag --> */}
+                                <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+                                <div class="modal modal-bottom sm:modal-middle">
+                                    <div class="modal-box ">
+                                        <h3 class="font-bold text-lg text-center p-[10px]">Sir do you want to delete the Product</h3>
+                                        <div class="card-actions justify-center">
+                                            <button class="btn btn-outline" onClick={() => deleteItem(item._id)}>Delete Product</button>
+                                            <label for="my-modal-6" class="btn">Clear</label>
+                                        </div>
 
+                                    </div>
+                                </div>
                             </div>
 
                         </div>

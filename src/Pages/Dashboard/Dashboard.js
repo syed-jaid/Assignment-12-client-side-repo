@@ -11,7 +11,7 @@ const Dashboard = () => {
     const [logUser, Loading] = useAuthState(auth)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${logUser?.email}`)
+        fetch(`https://murmuring-basin-10907.herokuapp.com/users/${logUser?.email}`)
             .then(res => res.json())
             .then(data => setuser(data))
     }, [])

@@ -18,7 +18,7 @@ const CheckourForm = ({ item }) => {
     const email = item?.email;
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://murmuring-basin-10907.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -83,7 +83,7 @@ const CheckourForm = ({ item }) => {
                 transactionId: paymentIntent.id
             }
 
-            fetch(`http://localhost:5000/orderPay/${_id}`, {
+            fetch(`https://murmuring-basin-10907.herokuapp.com/orderPay/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

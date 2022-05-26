@@ -17,7 +17,7 @@ const Payment = () => {
     const { _id } = useParams()
     console.log(_id)
 
-    const { data: item, isLoading } = useQuery('items', () => fetch(`http://localhost:5000/OrderItem/${_id}`, {
+    const { data: item, isLoading } = useQuery('items', () => fetch(`https://murmuring-basin-10907.herokuapp.com/OrderItem/${_id}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

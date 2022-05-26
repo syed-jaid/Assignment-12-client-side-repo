@@ -6,20 +6,46 @@ const AddaProducts = () => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
+    const imageStorageKey = 'ebb31a765adbf5e8fa47f725b9c10cab'
+
     const onSubmit = data => {
-        fetch('http://localhost:5000/productInsert', {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data) // body data type must match "Content-Type" header
+
+        const image = data?.img[0];
+        console.log(data)
+        const formData = new FormData()
+        formData.append('image', image)
+        fetch(`https://api.imgbb.com/1/upload?key=${imageStorageKey}`, {
+            method: 'POST',
+            body: formData
         })
             .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    reset()
-                    toast.success('The product is inserted')
+            .then(result => {
+                const img = result.data.url;
+                if (result.success) {
+                    const product = {
+                        name: data.name,
+                        discription: data.discription,
+                        img: img,
+                        price: data.price,
+                        minOrderquntity: data.minOrderquntity,
+                        availqunity: data.availqunity
+                    }
 
+                    fetch('https://murmuring-basin-10907.herokuapp.com/productInsert', {
+                        method: 'post',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(product) // body data type must match "Content-Type" header
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.acknowledged) {
+                                reset()
+                                toast.success('The product is inserted')
+
+                            }
+                        })
                 }
             })
     }
@@ -40,16 +66,23 @@ const AddaProducts = () => {
                         {errors.name?.type === 'required' && 'Product Name is Requierd'}
                     </label>
 
-                    {/* img */}
-                    <input {...register("img", {
-                        required: {
-                            value: true
-                        }
-                    }
-                    )} placeholder='Product Img' type='text' className="input input-bordered w-full my-[10px]" />
-                    <label className="w-full">
-                        {errors.img?.type === 'required' && 'Image is Requierd'}
-                    </label>
+                    <div className="form-control">
+                        {/* image */}
+                        <label className="label">
+                            <span className="label-text font-semibold">image</span>
+                        </label>
+                        <input {...register("img", {
+                            required: {
+                                value: true,
+                                message: "image is Requierd"
+                            }
+
+                        })}
+                            type='file' className="input input-bordered" />
+                        <label className="label">
+                            {errors.name?.type === 'required' && <span className="label-text-alt text-[red]">{errors?.image?.message}</span>}
+                        </label>
+                    </div>
 
                     {/* price */}
                     <input {...register("price", {

@@ -1,19 +1,15 @@
-
 import React, { useEffect, useState } from 'react';
-// import { FaStar } from "react-icons/fa";
-// import { Container, Radio, Rating } from "./RatingStyles";
+import { BsFillStarFill } from 'react-icons/bs';
 
 const Review = () => {
-    // const [rate, setRate] = useState();
 
     const [reviews, setreviews] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://murmuring-basin-10907.herokuapp.com/review')
             .then(res => res.json())
             .then(data => {
                 setreviews(data)
-                console.log(data)
             })
     }, [])
 
@@ -37,41 +33,57 @@ const Review = () => {
                         <div>
                             <h1>{review?.discripition}</h1>
                         </div>
-                        <div>
+                        <div className='flex '>
                             <p>Rating : {review?.raing} </p>
+
+                            {
+                                review?.raing === '5' &&
+                                <div className='flex mt-[2px] mx-[7px]'><BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                    <BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                    <BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                    <BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                    <BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                </div>
+                            }
+                            {
+                                review?.raing === '4' &&
+                                <div className='flex mt-[2px] mx-[7px]'>
+                                    <BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                    <BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                    <BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                    <BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                </div>
+                            }
+                            {
+                                review?.raing === '3' &&
+                                <div className='flex mt-[2px] mx-[7px]'>
+                                    <BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                    <BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                    <BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                </div>
+                            }
+                            {
+                                review?.raing === '2' &&
+                                <div className='flex mt-[2px] mx-[7px]'>
+                                    <BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                    <BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                </div>
+                            }
+                            {
+                                review?.raing === '1' &&
+                                <div className='flex mt-[2px] mx-[7px]'>
+                                    <BsFillStarFill className='m-[3px] text-[#f2ce06]' />
+                                </div>
+                            }
+
                         </div>
-                    </div>)
+
+                    </div>
+                    )
+
                 }
-                <div>
-                    {/* <Container>
-                    {[...Array(5)].map((item, index) => {
-                        const givenRating = index + 1;
-                        return (
-                            <label>
-                                <Radio
-                                    type="radio"
-                                    value={givenRating}
-                                    onClick={() => {
-                                        setRate(givenRating);
-                                        alert(`Are you sure you want to give ${givenRating} stars ?`);
-                                    }}
-                                />
-                                <Rating>
-                                    <FaStar
-                                        color={
-                                            givenRating < rate || givenRating === rate
-                                                ? "000"
-                                                : "rgb(192,192,192)"
-                                        }
-                                    />
-                                </Rating>
-                            </label>
-                        );
-                    })}
-                </Container> */}
-                </div>
             </div>
-        </div>
+        </div >
     );
 };
 

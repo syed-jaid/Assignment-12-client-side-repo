@@ -9,13 +9,13 @@ const Navbar = () => {
     const [user] = useAuthState(auth)
     const navigate = useNavigate('')
     const manu = <>
-        <li><Link to='/' className='font-semibold text-cyan-500'>HOME</Link></li>
+        <li><Link to='/' className='font-semibold '>HOME</Link></li>
         {
-            user?.email && <li><Link to='/dashboard' className='font-semibold text-cyan-500'>DASHBOARD</Link></li>
+            user?.email && <li><Link to='/dashboard' className='font-semibold '>DASHBOARD</Link></li>
         }
 
-        <li><Link to='/blogs' className='font-semibold text-cyan-500'>BLOG</Link></li>
-        <li><Link to='/about' className='font-semibold text-cyan-500'>ABOUT ME</Link></li>
+        <li><Link to='/blogs' className='font-semibold '>BLOG</Link></li>
+        <li><Link to='/about' className='font-semibold '>ABOUT ME</Link></li>
     </>
     return (
         <div className="navbar mx-auto lg:w-[1170px]  bg-base-100">

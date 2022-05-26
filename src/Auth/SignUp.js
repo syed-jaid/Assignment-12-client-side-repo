@@ -22,7 +22,7 @@ const SignUp = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
 
     // update Profile
-    const [updateProfile, updating, UpdatError] = useUpdateProfile(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     // send Email Verification
     const [sendEmailVerification, sending, Verificationerror] = useSendEmailVerification(auth);
@@ -34,17 +34,13 @@ const SignUp = () => {
     // react form 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    const onSubmit = async data => {
-        console.log(data)
-        await createUserWithEmailAndPassword(data.email, data.password, sendEmailVerification(true));
-        await updateProfile(data.name);
-    };
+
 
     let signInError;
 
     const [token] = useToken(guser || user)
 
-    if (gerror || error || UpdatError || Verificationerror) {
+    if (gerror || error || updateError || Verificationerror) {
         signInError = <p className='text-red-500'><small>{error?.message}{gerror?.message}</small></p>
     }
 
@@ -56,8 +52,13 @@ const SignUp = () => {
         naviget(from, { replace: true })
     }
 
+    const onSubmit = async data => {
+        console.log(data.name)
+        await createUserWithEmailAndPassword(data.email, data.password, sendEmailVerification(true));
+        await updateProfile({ displayName: data.name });
+        console.log(user)
 
-
+    };
     return (
         <div>
             <div className='flex h-screen justify-center  my-[40px]'>

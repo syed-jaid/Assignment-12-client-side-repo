@@ -6,7 +6,7 @@ const ManageProducts = () => {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/items')
+        fetch('https://murmuring-basin-10907.herokuapp.com/items')
             .then(res => res.json())
             .then(data => setItems(data))
     }, []);
@@ -14,7 +14,7 @@ const ManageProducts = () => {
     // delete Item api call
     const deleteItem = (props) => {
         console.log(props)
-        fetch(`http://localhost:5000/items/${props}`, {
+        fetch(`https://murmuring-basin-10907.herokuapp.com/items/${props}`, {
             method: 'Delete',
         })
             .then(response => response.json())

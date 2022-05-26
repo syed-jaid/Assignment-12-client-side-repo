@@ -14,7 +14,7 @@ const AddReviews = () => {
     const [username, setUserName] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/userProfile/${user?.email}`)
+        fetch(`https://murmuring-basin-10907.herokuapp.com/userProfile/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setUserName(data)
@@ -30,7 +30,7 @@ const AddReviews = () => {
             img: user.photoURL
         }
         console.log(review, data)
-        fetch('http://localhost:5000/review', {
+        fetch('https://murmuring-basin-10907.herokuapp.com/review', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json'

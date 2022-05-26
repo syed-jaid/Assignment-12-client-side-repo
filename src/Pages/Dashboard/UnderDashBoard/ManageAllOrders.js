@@ -8,7 +8,7 @@ const ManageAllOrders = () => {
     const navigate = useNavigate('')
     const [items, setitems] = useState([])
 
-    const { data, } = useQuery('itmes', fetch(`http://localhost:5000/Orders`, {
+    const { data, } = useQuery('itmes', fetch(`https://murmuring-basin-10907.herokuapp.com/Orders`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -30,7 +30,7 @@ const ManageAllOrders = () => {
         .then(data => setitems(data)))
 
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/Orders`, {
+    //     fetch(`https://murmuring-basin-10907.herokuapp.com/Orders`, {
     //         method: 'GET',
     //         headers: {
     //             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -54,7 +54,7 @@ const ManageAllOrders = () => {
 
     const updataShiping = (props) => {
 
-        fetch(`http://localhost:5000/orderUpdate/${props}`, {
+        fetch(`https://murmuring-basin-10907.herokuapp.com/orderUpdate/${props}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -76,7 +76,7 @@ const ManageAllOrders = () => {
         console.log(props)
         const confirm = window.confirm('Do you want to Remove it')
         if (confirm) {
-            fetch(`http://localhost:5000/orders/${props}`, {
+            fetch(`https://murmuring-basin-10907.herokuapp.com/orders/${props}`, {
                 method: 'Delete',
             })
                 .then(response => response.json())

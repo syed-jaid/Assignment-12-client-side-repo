@@ -6,7 +6,7 @@ import auth from '../../../firebase.init';
 
 const MakeAdmin = () => {
 
-    // const { Data: users, refetch } = useQuery('userss', () => fetch(`http://localhost:5000/users`, {
+    // const { Data: users, refetch } = useQuery('userss', () => fetch(`https://murmuring-basin-10907.herokuapp.com/users`, {
     //     method: 'GET',
     //     headers: {
     //         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -29,7 +29,7 @@ const MakeAdmin = () => {
     const [users, setUser] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://murmuring-basin-10907.herokuapp.com/users')
             .then(res => res.json())
             .then(data => setUser(data))
     }, [])
@@ -37,7 +37,7 @@ const MakeAdmin = () => {
 
     const makeAdmin = (email) => {
 
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://murmuring-basin-10907.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

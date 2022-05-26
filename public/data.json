@@ -1,62 +1,50 @@
 [
     {
-        "name": "name",
-        "discription": "discription",
+        "name": "Gigabyte 12GB Graphics Card",
+        "discription": "GPU Artifacting mostly occurs when you are overclocking your graphics card.",
         "img": "https://i.ibb.co/z4dd2mZ/1.png",
-        "price": 492,
-        "quantity": "quantity",
-        "minOrderquntity": 4,
-        "availqunity": 17,
-        "supplierName": "supplierName"
+        "price": 452,
+        "minOrderquntity": 5,
+        "availqunity": 137
     },
     {
-        "name": "name",
-        "discription": "discription",
+        "name": "ASUS 8GB Graphics Card",
+        "discription": "The asus 8gb graphics card features nvidia ampere streaming multiprocessors.",
         "img": "https://i.ibb.co/X7wm0Xp/6.png",
-        "price": 492,
-        "quantity": "quantity",
-        "minOrderquntity": 4,
-        "availqunity": 82,
-        "supplierName": "supplierName"
+        "price": 532,
+        "minOrderquntity": 6,
+        "availqunity": 82
     },
     {
-        "name": "name",
-        "discription": "discription",
+        "name": "Zotac Gaming Graphics Card",
+        "discription": "This zotac gaming geforce rtx 3080 is featured with cuda cores 8704.",
         "img": "https://i.ibb.co/YQRgrhW/2.png",
-        "price": 492,
-        "quantity": "quantity",
+        "price": 563,
         "minOrderquntity": 4,
-        "availqunity": 31,
-        "supplierName": "supplierName"
+        "availqunity": 83
     },
     {
-        "name": "name",
-        "discription": "discription",
+        "name": "zotac 12GB Graphics Card",
+        "discription": "This zotac gaming geforce rtx 3080 is featured with cuda cores 8704.",
         "img": "https://i.ibb.co/BsNFY5V/4.png",
-        "price": 492,
-        "quantity": "quantity",
+        "price": 462,
         "minOrderquntity": 4,
-        "availqunity": 31,
-        "supplierName": "supplierName"
+        "availqunity": 73
     },
     {
-        "name": "name",
-        "discription": "discription",
+        "name": "ASUS 8GB Graphics Card",
+        "discription": "The asus 8gb graphics card features nvidia ampere streaming multiprocessors.",
         "img": "https://i.ibb.co/8X7ffcx/5.png",
-        "price": 492,
-        "quantity": "quantity",
+        "price": 594,
         "minOrderquntity": 4,
-        "availqunity": 56,
-        "supplierName": "supplierName"
+        "availqunity": 56
     },
     {
-        "name": "name",
-        "discription": "discription",
+        "name": "Gigabyte 12GB Graphics Card",
+        "discription": "GPU Artifacting mostly occurs when you are overclocking your graphics card.",
         "img": "https://i.ibb.co/BsNFY5V/4.png",
-        "price": 492,
-        "quantity": "quantity",
+        "price": 592,
         "minOrderquntity": 4,
-        "availqunity": 32,
-        "supplierName": "supplierName"
+        "availqunity": 72
     }
 ]

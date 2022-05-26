@@ -14,7 +14,7 @@ const Update = () => {
     const [username, setUserName] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/userProfile/${user?.email}`)
+        fetch(`https://murmuring-basin-10907.herokuapp.com/userProfile/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setUserInfo(data.user)
@@ -24,7 +24,7 @@ const Update = () => {
 
     const onSubmit = data => {
         console.log(data)
-        fetch('http://localhost:5000/userUpdate', {
+        fetch('https://murmuring-basin-10907.herokuapp.com/userUpdate', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
