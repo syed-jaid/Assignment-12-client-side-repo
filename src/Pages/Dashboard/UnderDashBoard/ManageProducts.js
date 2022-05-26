@@ -53,7 +53,7 @@ const ManageProducts = () => {
                                 <div class="modal-box ">
                                     <h3 class="font-bold text-lg text-center p-[10px]">Sir do you want to delete the Product</h3>
                                     <div class="card-actions justify-center">
-                                        <button class="btn btn-outline" onClick={() => deleteItem(item._id)}>Delete Product</button>
+                                        <button class="btn btn-outline" onClick={() => deleteItem(item?._id)}>Delete Product</button>
                                         <label for="my-modal-6" class="btn">Clear</label>
                                     </div>
 
